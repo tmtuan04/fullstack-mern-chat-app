@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Ngày Tháng Năm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .form-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 6px 12px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nhập Ngày Tháng Năm</h1>
+    <div class="form-container">
+        <input id="date-input" type="text" placeholder="dd/mm/yyyy" />
+        <button onclick="validateDate()">Xác nhận</button>
+    </div>
+    <div class="message" id="message"></div>
+
+    <script>
+        function validateDate() {
+            const dateInput = document.getElementById('date-input').value;
+            const message = document.getElementById('message');
+            
+            // Regex pattern for dd/mm/yyyy
+            const datePattern = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(\d{4})$/;
+            
+            if (datePattern.test(dateInput)) {
+                message.textContent = `Ngày hợp lệ: ${dateInput}`;
+                message.style.color = 'green';
+            } else {
+                message.textContent = "Ngày không hợp lệ. Vui lòng nhập đúng định dạng (dd/mm/yyyy).";
+                message.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
